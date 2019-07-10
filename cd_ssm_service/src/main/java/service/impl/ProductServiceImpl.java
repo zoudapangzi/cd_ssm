@@ -1,5 +1,6 @@
 package service.impl;
 
+import com.github.pagehelper.PageHelper;
 import dao.ProductDao;
 import domain.Product;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +17,8 @@ public class ProductServiceImpl implements ProductService {
     private ProductDao productDao;
 
     @Override
-    public List<Product> findAll() throws Exception {
+    public List<Product> findAll(int page,int size) throws Exception {
+        PageHelper.startPage(page,size);
         return productDao.findAll();
     }
 

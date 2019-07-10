@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface ProductService {
 
-    public List<Product> findAll() throws Exception;
+    public List<Product> findAll(int page,int size) throws Exception;
 
     void save(Product product)throws Exception;
 }

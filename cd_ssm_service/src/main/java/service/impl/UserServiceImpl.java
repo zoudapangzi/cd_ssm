@@ -55,7 +55,6 @@ public class UserServiceImpl implements UserService {
     public void save(UserInfo userInfo) {
         //密码的加密处理
         userInfo.setPassword(bCryptPasswordEncoder.encode(userInfo.getPassword()));
-
         userDao.save(userInfo);
     }
 

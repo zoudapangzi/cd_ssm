@@ -1,5 +1,7 @@
 service\impl\UserServiceImpl.class
 service\impl\PermissionServiceImpl.class
+service\SysLogService.class
+service\impl\SysLogServiceImpl.class
 service\PermissionService.class
 service\impl\ProductServiceImpl.class
 service\impl\RoleServiceImpl.class

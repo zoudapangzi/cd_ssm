@@ -26,6 +26,7 @@
 				href="${pageContext.request.contextPath}/pages/main.jsp"><i
 					class="fa fa-dashboard"></i> <span>首页</span></a></li>
 
+			<security:authorize access="hasRole('ADMIN')">
 			<li class="treeview"><a href="#"> <i class="fa fa-cogs"></i>
 					<span>系统管理</span> <span class="pull-right-container"> <i
 						class="fa fa-angle-left pull-right"></i>
@@ -34,7 +35,6 @@
 
 			</a>
 				<ul class="treeview-menu">
-
 					<li id="system-setting"><a
 						href="${pageContext.request.contextPath}/user/findAll"> <i
 							class="fa fa-circle-o"></i> 用户管理
@@ -47,11 +47,13 @@
 						href="${pageContext.request.contextPath}/permission/findAll">
 							<i class="fa fa-circle-o"></i> 资源权限管理
 					</a></li>
+
 					<li id="system-setting"><a
 						href="${pageContext.request.contextPath}/sysLog/findAll"> <i
 							class="fa fa-circle-o"></i> 访问日志
 					</a></li>
 				</ul></li>
+					</security:authorize>
 			<li class="treeview"><a href="#"> <i class="fa fa-cube"></i>
 					<span>基础数据</span> <span class="pull-right-container"> <i
 						class="fa fa-angle-left pull-right"></i>
@@ -60,7 +62,7 @@
 				<ul class="treeview-menu">
 
 					<li id="system-setting"><a
-						href="${pageContext.request.contextPath}/product/findAll">
+						href="${pageContext.request.contextPath}/product/findAll?page=1&pageSize=3">
 							<i class="fa fa-circle-o"></i> 产品管理
 					</a></li>
 					<li id="system-setting"><a

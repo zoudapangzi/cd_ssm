@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import service.OrdersService;
 
@@ -26,9 +27,9 @@ public class OrdersController {
      * @return
      * @throws Exception
      */
-    @RolesAllowed("ADMIN")
+//    @RolesAllowed("ADMIN")
     @RequestMapping("/findAll")
-    public ModelAndView findAll(@RequestParam(name = "page", required =true, defaultValue = "1") int page, @RequestParam(name = "size", required =true, defaultValue = "4") int size) throws Exception {
+    public ModelAndView findAll(@RequestParam(name = "page", required =true, defaultValue = "1") Integer page, @RequestParam(name = "size", required =true, defaultValue = "4") Integer size) throws Exception {
         ModelAndView mv = new ModelAndView();
         List<Orders> ordersList = ordersService.findAll(page, size);
         //PageInfo就是一个分页Bean
@@ -37,6 +38,7 @@ public class OrdersController {
         mv.setViewName("orders-page-list");
         return mv;
     }
+
     //未分页代码
     /*@RequestMapping("/findAll")
     public ModelAndView findAll() throws Exception {
@@ -56,4 +58,10 @@ public class OrdersController {
         return mv;
     }
 
+    @RequestMapping("/deleteById")
+    @ResponseBody
+    public void deleteById(@RequestParam(name = "id",required = true) String id){
+        ModelAndView mv=new ModelAndView();
+        System.out.println(id);
+    }
 }
